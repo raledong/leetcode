@@ -4,6 +4,8 @@ package math;
  * @author rale
  * Given an integer n, return the number of trailing zeroes in n!.
  * Note: Your solution should be in logarithmic time complexity.
+ * 
+ * 这题的思路其实等价于找到前n个数中一共含有多少个5，鉴于前n个数中的2一定比5多，所以只需要找5即可
  */
 public class FactorialTrailingZeroes_172 {
 
