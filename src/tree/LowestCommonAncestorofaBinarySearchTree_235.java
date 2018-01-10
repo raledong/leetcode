@@ -33,9 +33,4 @@ public class LowestCommonAncestorofaBinarySearchTree_235 {
 		 }
 		 return root;
 	 }
-	 public boolean contains(TreeNode root, TreeNode p){
-		 if(root==null) return false;
-		 if(root==p) return true;
-		 return contains(root.left, p) || contains(root.right, p);
-	 }
 }
