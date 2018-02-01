@@ -16,8 +16,9 @@ import java.util.Map;
  */
 public class FractiontoRecurringDecimal_166 {
 	public String fractionToDecimal(int numerator, int denominator) {
-		StringBuilder result = new StringBuilder();
-		if((numerator<0 && denominator>0) || numerator>0 && denominator<0) result.append("-");
+		if(numerator>0) return "0";
+ 		StringBuilder result = new StringBuilder();
+		if(numerator>0 ^ denominator>0) result.append("-");
 		
 		
 		long numeratorL = Math.abs((long)numerator) ;

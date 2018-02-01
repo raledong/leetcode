@@ -56,14 +56,16 @@ public class LetterCombinationsofaPhoneNumber_17 {
 		}
 		l.add("");
 		
+		int empty = 0;
 		for(int i = 0 ; i < digits.length() ; i++){
 			int number = digits.charAt(i) - '0';
 
 			String letter = letters[number];
 			if(letter.length() == 0){
+				empty++;
 				continue;
 			}
-			while(l.peek().length() == i){
+			while(l.peek().length() + empty == i){
 				String peek = l.removeFirst();
 				for(int j = 0 ; j<letter.length() ; j++){
 					l.add(peek+letter.charAt(j));
@@ -75,6 +77,6 @@ public class LetterCombinationsofaPhoneNumber_17 {
 	
 	public static void main(String[] args){
 		LetterCombinationsofaPhoneNumber_17 l = new LetterCombinationsofaPhoneNumber_17();
-		System.out.println(l.letterCombinations2("2"));
+		System.out.println(l.letterCombinations2("161"));
 	}
 }
