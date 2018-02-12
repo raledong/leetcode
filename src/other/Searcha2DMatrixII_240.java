@@ -48,7 +48,7 @@ public class Searcha2DMatrixII_240 {
         column = matrix[0].length;
         
         
-        return searchMatrix(0, 0, target, matrix);
+        return searchMatrix2(matrix, target, 0, 0 ,row-1, column-1);
     }
 
 	public boolean searchMatrix2(int[][] matrix, int target, int leftRow, int leftColumn, int rightRow, int rightColumn){
