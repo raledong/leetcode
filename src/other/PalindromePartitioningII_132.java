@@ -58,6 +58,7 @@ public class PalindromePartitioningII_132 {
 		return true;
 	}
 	
+	//dp深入运用
 	public int minCut2(String s){
 		if(s==null || s.length()<=1) return 0;
 		int length = s.length();
