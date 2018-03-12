@@ -19,7 +19,9 @@ public class RemoveInvalidParentheses_301 {
         List<String> result = new ArrayList<String>();
         removeInvalidParentheses(s, result, 0, 0, new char[]{'(', ')'});
         return result;
-    }
+    } 
+	
+	
 	
 	public void removeInvalidParentheses(String s, List<String> result, int lastRemoveIndex, int lastCheckedIndex, char[] pattern){
 		for(int stack = 0, i = lastCheckedIndex ; i<s.length() ; i++){
