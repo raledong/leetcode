@@ -25,6 +25,7 @@ package other;
  * The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
  */
 public class LongestIncreasingPathinaMatrix_329 {
+	
 	int max = 1;
 	public int longestIncreasingPath(int[][] matrix) {
 		if(matrix==null || matrix.length==0 || matrix[0].length == 0) return 0;
