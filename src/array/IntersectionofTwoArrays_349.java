@@ -42,4 +42,30 @@ public class IntersectionofTwoArrays_349 {
             arr[k]=nums3.get(k);
         return arr;
     }
+	
+	public int[] intersection2(int[] nums1, int[] nums2){
+		if(nums1==null || nums2==null || nums1.length == 0 || nums2.length == 0){
+			return new int[0];
+		}
+		int max = nums1[0], min = nums1[0];
+		for(int n : nums1){
+			if(n > max) max = n;
+			else if(n < min) min = n;
+		}
+		
+		boolean[] index = new boolean[max - min + 1];
+		for(int n : nums1){
+			index[n - min] = true;
+		}
+		
+		int count = 0;
+		int[] tmp = new int[Math.min(nums1.length, nums2.length)];
+		for(int n : nums2){
+			if(n>=min && n<=max && index[n-min]){
+				tmp[count++] = n;
+				index[n-min] =false;
+			}
+		}
+		return count == tmp.length ? tmp : Arrays.copyOf(tmp, count);
+	}
 }
