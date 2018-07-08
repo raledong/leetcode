@@ -61,8 +61,11 @@ public class TopKFrequentElements_347 {
         }
         int[] buckets = new int[max - min + 1];
         for (int i = 0; i < nums.length; i++) {
+        	//hashmap
             buckets[nums[i] - min]++;
         }
+        
+        //桶
         List[] counting = new ArrayList[nums.length + 1];
         for (int i = 0; i < buckets.length; i++) {
             int sizeOfBucket = buckets[i];
