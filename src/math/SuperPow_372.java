@@ -2,7 +2,20 @@ package math;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given 
+ * in the form of an array.
+ * Example 1:
+ * Input: a = 2, b = [3]
+ * Output: 8
+ * Example 2:
+ * Input: a = 2, b = [1,0]
+ * Output: 1024
+ * 
+ * 核心点在于：a*b%1337 = (1337x+c)(1337y+d)%1337 =cd % 1337 
+ * @author rale
+ *
+ */
 public class SuperPow_372 {
 	
 int DIV = 1337;
