@@ -78,14 +78,14 @@ public class CountofRangeSum_327 {
         	sums[i+1] = sums[i] + nums[i];
         }
 		long[] sortedSums = new long[nums.length + 1];
-		return mergeCountRangeSum(sums, sortedSums, 0, nums.length+1, lower, upper);
+		return mergeCountRangeSum3(sums, sortedSums, 0, nums.length+1, lower, upper);
 	}
 	
-	public int mergeCountRangeSum(long[] sums,long[]  sortedSums, int start, int end, int lower, int upper) {
+	public int mergeCountRangeSum3(long[] sums,long[]  sortedSums, int start, int end, int lower, int upper) {
 		if(end - start <= 1) return 0;
 		int mid = (start + end) / 2;
-		int count = mergeCountRangeSum(sums, start, mid, lower, upper) 
-				+ mergeCountRangeSum(sums, mid, end, lower, upper);
+		int count = mergeCountRangeSum3(sums, sortedSums, start, mid, lower, upper) 
+				+ mergeCountRangeSum3(sums, sortedSums, mid, end, lower, upper);
 		int firstLargerThanUpper = mid, firstLargerThanLower = mid, indexOfRightHalf = mid;
 		for(int i = start, sortedSumsIndex = start; i < mid ; i++, sortedSumsIndex++) {
 			while(firstLargerThanUpper < end && sums[firstLargerThanUpper] - sums[i] <= upper)  firstLargerThanUpper++;
