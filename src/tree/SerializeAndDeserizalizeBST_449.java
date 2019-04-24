@@ -111,6 +111,5 @@ public class SerializeAndDeserizalizeBST_449 {
     	t1.right = t3;
     	String result = s.serialize(t1);
     	System.out.println(result);
-    	TreeNode d = s.deserialize2(result);
     }
 }
