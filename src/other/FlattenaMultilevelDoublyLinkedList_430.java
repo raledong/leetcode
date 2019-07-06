@@ -22,6 +22,11 @@ Output:
  */
 public class FlattenaMultilevelDoublyLinkedList_430 {
 
+	/**
+	 * 返回head， 但是会出现大量重复的遍历，遍历的次数由子节点的深度决定
+	 * @param head
+	 * @return
+	 */
 	public Node flatten(Node head) {
         if(head == null) return head;
         Node tmp = head;
@@ -48,6 +53,11 @@ public class FlattenaMultilevelDoublyLinkedList_430 {
         return head;
     }
 	
+	/**
+	 * 返回tail，极大的减少了重复遍历的次数，用O（N）的时间复杂度完成数据重构
+	 * @param head
+	 * @return
+	 */
 	public Node flatten2(Node head) {
 		flattenAndReturnTail(head);
 		return head;
@@ -73,6 +83,33 @@ public class FlattenaMultilevelDoublyLinkedList_430 {
 			}
 			return childTail;
 		}
+	}
+	
+	public Node flatten3(Node head) {
+		if(head == null) return null;
+		
+		Node tmp = head;
+		while(tmp != null) {
+			if(tmp.child != null) {
+				
+				Node child = tmp.child;
+				tmp.child = null;
+				
+				Node next = tmp.next;
+				tmp.next = child;
+				child.prev = tmp;
+				while(child.next != null) {
+					child =  child.next;
+				}
+				
+				if(next != null) {
+                    child.next = next;
+                    next.prev = child;
+                }
+			}
+			tmp = tmp.next;
+		}
+		return head;
 	}
 	class Node {
 	    public int val;
