@@ -1,0 +1,80 @@
+package stack;
+
+import java.util.Stack;
+
+/**
+ * Given a sequence of n integers a1, a2, ..., an, a 132 pattern is a subsequence ai, aj, ak such that i < j < k and ai < ak < aj. Design an algorithm that takes a list of n numbers as input and checks whether there is a 132 pattern in the list.
+
+Note: n will be less than 15,000.
+
+Example 1:
+Input: [1, 2, 3, 4]
+
+Output: False
+
+Explanation: There is no 132 pattern in the sequence.
+Example 2:
+Input: [3, 1, 4, 2]
+
+Output: True
+
+Explanation: There is a 132 pattern in the sequence: [1, 4, 2].
+Example 3:
+Input: [-1, 3, 2, 0]
+
+Output: True
+
+Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
+ * @author rale
+ *
+ */
+public class OneThreeTwoPattern_456 {
+	
+	public static class Pair{
+		int min;
+		int max;
+		
+		public Pair(int min, int max){
+			this.min = min;
+			this.max = max;
+		}
+	}
+	public boolean find132pattern(int[] nums) {
+		Stack<Pair> pairs = new Stack<Pair>();
+		for(int num : nums) {
+			if(pairs.isEmpty() || num < pairs.peek().min) {
+				pairs.push(new Pair(num, num));
+			}else if(num > pairs.peek().min){
+				Pair pair = pairs.pop();
+				if(num < pair.max) {
+					return true;
+				}else {
+					pair.max = num;
+					while(!pairs.isEmpty() && num >= pairs.peek().max){
+						pairs.pop();
+					}
+					if(!pairs.isEmpty() && num > pairs.peek().min) {
+						return true;
+					}
+				}
+				pairs.push(pair);
+			}
+		}
+		return false;
+		
+    }
+	
+	 public boolean find132pattern2(int[] nums) {
+	        int n = nums.length, top = n, third = Integer.MIN_VALUE;
+
+	        for (int i = n - 1; i >= 0; i--) {
+	            if (nums[i] < third) return true;
+	            while (top < n && nums[i] > nums[top]) third = nums[top++];
+	            nums[--top] = nums[i];
+	        }
+	    
+	        return false;
+	    }
+	
+	
+}
