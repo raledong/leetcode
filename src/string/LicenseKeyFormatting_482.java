@@ -45,7 +45,7 @@ public class LicenseKeyFormatting_482 {
         		}
         	}
         }
-        if(result.lastIndexOf("-") == result.length() - 1) {
+        if(result.length() > 0 && result.lastIndexOf("-") == result.length() - 1) {
         	result.deleteCharAt(result.length() - 1);
         }
         return result.reverse().toString();
